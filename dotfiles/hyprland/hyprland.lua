@@ -33,7 +33,7 @@ local terminal    = "kitty"
 local fileManager = "thunar"
 local menu        = "wofi --show drun"
 local browser	  = "firefox"
-
+local taskbar     = "waybar"
 
 -------------------
 ---- AUTOSTART ----
@@ -44,11 +44,12 @@ local browser	  = "firefox"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
--- hl.on("hyprland.start", function () 
+ hl.on("hyprland.start", function ()
+     hl.exec_cmd(taskbar)
 --   hl.exec_cmd(terminal)
 --   hl.exec_cmd("nm-applet")
 --   hl.exec_cmd("waybar & hyprpaper & firefox")
--- end)
+ end)
 
 
 -------------------------------
@@ -266,7 +267,7 @@ hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
-
+hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd("pkill wofi || " .. menu), { release = true })
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))

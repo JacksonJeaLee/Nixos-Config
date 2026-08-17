@@ -71,6 +71,8 @@
     # EDITOR = "emacs";
   };
 
+
+  
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
@@ -82,12 +84,21 @@
   };
 
   # Hyprland
-  xdg.configFile."hypr/hyprland.lua".source = ./hyprland/hyprland.lua;
+  xdg.configFile."hypr/hyprland.lua".source = ./dotfiles/hyprland/hyprland.lua;
+
+  # Kitty
+  xdg.configFile."kitty/kitty.conf".source = ./dotfiles/kitty/kitty.conf;
+
+  # Waybar
+  xdg.configFile."waybar/config.jsonc".source = ./dotfiles/waybar/config.jsonc;
+  xdg.configFile."waybar/style.css".source = ./dotfiles/waybar/style.css;
+  xdg.configFile."waybar/mediaplayer.sh".source = ./dotfiles/waybar/mediaplayer.sh;
 
   programs.bash = {
     enable = true;
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch";
+      # Git add and Rebuild.
+      rebuild = "sudo git -C /etc/nixos add -A && sudo nixos-rebuild switch";
       reboot = "sudo reboot";
       unimatrix = "unimatrix -c cyan -s 85";
       lavat = "lavat -G -k cyan -c blue -F @#$";

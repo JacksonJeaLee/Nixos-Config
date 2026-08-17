@@ -81,7 +81,12 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Simple Desktop Devices
+
+    pavucontrol
+    playerctl
     waybar
+    adwaita-icon-theme
+
     wofi
     mako
     hyprpaper
@@ -91,6 +96,8 @@
     xdg-desktop-portal-hyprland
     polkit_gnome
     thunar
+    unzip
+    p7zip
 
     librewolf
     firefox
@@ -103,6 +110,8 @@
     unimatrix
     cava
   ];
+
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 
   home-manager = {
 

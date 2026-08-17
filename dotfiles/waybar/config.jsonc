@@ -1,0 +1,68 @@
+{
+    "position": "top",
+    "height": 24,
+    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["pulseaudio", "network", "battery", "clock", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+	"on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace +1",
+        "on-scroll-down": "hyprctl dispatch workspace -1"
+    },
+
+    "tray": {
+        "spacing": 20
+    },
+    "clock": {
+        "format": "{:%I:%M }",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% \uf2db",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{usage}% \uf538"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+        "format-charging": "{capacity}% \uf0e7",
+        "format-plugged": "{capacity}% \uf1e6",
+        "format-alt": "{time} {icon}"
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) \uf1eb",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} \uf796",
+        "format-linked": "{ifname} (No IP) \uf1eb",
+        "format-disconnected": "Disconnected \uf00d",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-icons": {
+            "default": ["\uf026", "\uf027", "\uf028"]
+        },
+        "format-bluetooth": "{volume}% \uf294 {format_source}",
+        "format-bluetooth-muted": "\uf6a9 {format_source}",
+        "format-muted": "\uf6a9 {format_source}",
+        "format-source": "{volume}% \uf130",
+        "format-source-muted": "\uf131",
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "\uf001 {}",
+        "return-type": "json",
+        "max-length": 40,
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null",
+        "interval": 2
+    }
+}
